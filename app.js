@@ -15,7 +15,7 @@ const router = (path) => {
             return AboutPage({
                 title: "Hello modest world!",
                 text: "Learn more about",
-                link: "https://www.google.com"
+                link: "https://github.com/ionutrogojan/modestJS"
             });
         case "#home":
         default:
@@ -23,7 +23,7 @@ const router = (path) => {
             return HomePage({
                 title: "Hello modest world!",
                 text: "This is an example of",
-                link: "https://www.google.com"
+                link: "https://github.com/ionutrogojan/modestJS"
             });
     }
 }
