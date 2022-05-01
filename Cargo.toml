@@ -1,0 +1,8 @@
+[package]
+name = "modest_compiler"
+version = "0.1.0"
+authors = ["Ionut Rogojan"]
+description = "a small compiler for the modest js framework"
+documentation = ""
+readme = "README.md"
+license = "MIT"

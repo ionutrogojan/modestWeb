@@ -1,0 +1,15 @@
+@content{
+    <div>
+        <p>This a P inside a DIV</p>
+    </div>
+}
+
+@action{
+    const number = 0;
+}
+
+@look{
+    div{
+        background-color: red;
+    }
+}
