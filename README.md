@@ -1,11 +1,11 @@
-# modestJS
-Blazingly fast and simple JavaScript library, the feeling of React with vanilla methods.
+# modestWeb
+Blazingly fast and simple web library, the feeling of React compiled to vanilla code.
 
 ## Documentation
 
 Get started quickly with this short guide
 
-### 1. Import pages and components to the app.js file
+### 1. Import pages and components to the index.modest file
 
 ```js
 // import Modest from 'modest';
