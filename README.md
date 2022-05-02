@@ -5,76 +5,57 @@ Blazingly fast and simple web library, the feeling of React compiled to vanilla 
 
 Get started quickly with this short guide
 
-### 1. Import pages and components to the index.modest file
+### 1. File structure
 
-```js
-// import Modest from 'modest';
-
-// pages
-import HomePage from "./pages/homePage.modest.js";
-import AboutPage from "./pages/aboutPage.modest.js";
-// components
-import Navigation from "./components/navigation.modest.js";
+Every project starts with a `main.modest` file, holding the layout and persisting components of a page
+```css
+/main.modest
+/pages
+    /index.modest
+    /404.modest
+    /about.modest
+    /faq.modest
+/output
+    /style.css
+    /index
+        /index.html
+        /index.js
 ```
+### 2. File contents
 
-### 2. Hook up the hash based router
+ModestWeb tries to provide a single environment for development, eliminating the need to switch tabs every time you need to modify a page and its components.
 
-```js
-// router
-const router = (path) => {
-    switch(path){
-        case "#about":
-            document.title = "About | Modest";
-            return AboutPage({
-                title: "Hello modest world!",
-                text: "Learn more about",
-                link: "https://github.com/ionutrogojan/modestJS"
-            });
-        case "#home":
-        default:
-            document.title = "Home | Modest";
-            return HomePage({
-                title: "Hello modest world!",
-                text: "This is an example of",
-                link: "https://github.com/ionutrogojan/modestJS"
-            });
+`@content` - holds all the html markup present on the respective page or component
+
+`@action` - holds all the js scripts present on the respective page or component
+
+`@look` - holds all the style markup present on the respective page or component
+```css
+@content{
+    <div>
+        <p>This a P inside a DIV</p>
+    </div>
+}
+
+@action{
+    const number = 0;
+}
+
+@look{
+    div{
+        background-color: red;
     }
 }
 ```
 
-### 3.Load the navigation component and update the page content
-```js
-window.addEventListener('load', () => {
-    Navigation({
-        link1: "home",
-        link2: "about"
-    });
-    router(window.location.hash);
-});
+## Modest Compiler
 
-window.addEventListener('hashchange', () => {
-    router(window.location.hash);
-    // console.log(window.location.hash);
-})
-```
+ModestWeb uses a lightweight blazingly fast rust [modest compilor](https://github.com/ionutrogojan/modestWeb/tree/modest-compiler) that turns your modest code into vanilla web code.
 
-### Page Example
-
-```js
-// import Modest from 'modest';
-const pageContent = document.querySelector('#modest_content');
-
-const HomePage = ({title, text, link}) => {
-    const html = `
-        <div class="container">
-            <h1 class="title">${title}</h1>
-            <p class="text">${text} <a class="link" href=${link} target="_blank">ModestJS</a></p>
-        </div>
-    `;
-    return pageContent.innerHTML = html;
-}
-
-export default HomePage;
+To compile your `.modest` files to vanilla code use the following command.
+```rs
+modestcompilor ./pages/index.modest
+// output -> index.html / index.js / style.css
 ```
 
 ## License
